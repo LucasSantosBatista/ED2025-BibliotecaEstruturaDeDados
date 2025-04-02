@@ -1,8 +1,8 @@
 package br.lucassbatista.ed;
 
-class NoString {
-	String dado;
-	NoString proximo;
+class NoPilha<T> {
+	T dado;
+	NoPilha<T> proximo;
 	
 	@Override
 	public String toString() {
