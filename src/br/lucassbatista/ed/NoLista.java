@@ -1,11 +1,13 @@
 package br.lucassbatista.ed;
 
-class NoFila<T> {
+class NoLista<T> {
+	
 	T dado;
-	NoFila<T> proximo;
-
+	NoLista<T> proximo;
+	
 	@Override
 	public String toString() {
 		return "[" + dado + "]";
 	}
+	
 }
