@@ -1,6 +1,6 @@
 package br.lucassbatista.ed;
 
-public class ListaEncadeada<T> {
+public class Set<T> {
 	No<T> primeiro;
 
 	public boolean isEmpty() {
@@ -43,11 +43,12 @@ public class ListaEncadeada<T> {
 	}
 
 	public void addFirst(T valor) {
-		No<T> elemento = new No<>();
-		elemento.dado = valor;
-		elemento.proximo = primeiro;
-		primeiro = elemento;
-
+		if (verificaSet(valor) == false) {
+			No<T> elemento = new No<>();
+			elemento.dado = valor;
+			elemento.proximo = primeiro;
+			primeiro = elemento;
+		}
 	}
 
 	public void addLast(T valor) throws Exception {
@@ -55,33 +56,37 @@ public class ListaEncadeada<T> {
 			throw new Exception("Lista vazia!");
 		}
 
-		int tamanho = size() - 1;
-		No<T> elemento = new No<>();
-		elemento.dado = valor;
-		elemento.proximo = null;
+		if (verificaSet(valor) == false) {
+			int tamanho = size() - 1;
+			No<T> elemento = new No<>();
+			elemento.dado = valor;
+			elemento.proximo = null;
 
-		No<T> ultimo = getNo(tamanho);
-		ultimo.proximo = elemento;
+			No<T> ultimo = getNo(tamanho);
+			ultimo.proximo = elemento;
+		}
 	}
 
 	public void add(T valor, int pos) throws Exception {
-		int tamanho = size();
-		if (pos < 0 || pos > tamanho) {
-			throw new Exception("Posição inválida!");
-		}
+		if (verificaSet(valor) == false) {
+			int tamanho = size();
+			if (pos < 0 || pos > tamanho) {
+				throw new Exception("Posição inválida!");
+			}
 
-		if (pos == 0) {
-			addFirst(valor);
-		} else if (pos == tamanho) {
-			addLast(valor);
-		} else {
-			No<T> elemento = new No<>();
-			elemento.dado = valor;
+			if (pos == 0) {
+				addFirst(valor);
+			} else if (pos == tamanho) {
+				addLast(valor);
+			} else {
+				No<T> elemento = new No<>();
+				elemento.dado = valor;
 
-			No<T> anterior = getNo(pos - 1);
-			elemento.proximo = anterior.proximo;
-			anterior.proximo = elemento;
+				No<T> anterior = getNo(pos - 1);
+				elemento.proximo = anterior.proximo;
+				anterior.proximo = elemento;
 
+			}
 		}
 
 	}
@@ -140,7 +145,7 @@ public class ListaEncadeada<T> {
 
 		int cont = 0;
 		No<T> aux = primeiro;
-		while (cont < pos) { 
+		while (cont < pos) {
 			aux = aux.proximo;
 			cont++;
 		}
@@ -155,15 +160,31 @@ public class ListaEncadeada<T> {
 		if (isEmpty()) {
 			throw new Exception("Lista vazia!");
 		}
-		
-	    No<T> aux = primeiro;
-	    System.out.print("Lista = ");
-	    while (aux != null) {
-	        System.out.print(aux.dado + " ");
-	        aux = aux.proximo;
-	    }
-	    System.out.println();
+
+		No<T> aux = primeiro;
+		System.out.print("Lista = ");
+		while (aux != null) {
+			System.out.print(aux.dado + " ");
+			aux = aux.proximo;
+		}
+		System.out.println();
 	}
 
+	private boolean verificaSet(T valor) {
+		if (isEmpty()) {
+			return false;
+		} else {
+			No<T> aux = primeiro;
+
+			while (aux != null) {
+				if (aux.dado == valor) {
+					return true;
+				}
+				aux = aux.proximo;
+			}
+			return false;
+		}
+
+	}
 
 }

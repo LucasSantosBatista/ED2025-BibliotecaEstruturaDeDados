@@ -1,7 +1,7 @@
 package br.lucassbatista.ed;
 
 public class PilhaDinamica<T> {
-	NoPilha<T> topo;
+	No<T> topo;
 	
 	public boolean isEmpty() {
 		if (topo == null){
@@ -12,7 +12,7 @@ public class PilhaDinamica<T> {
 	}
 	
 	public void push(T e) {
-		NoPilha<T> elemento = new NoPilha<>();
+		No<T> elemento = new No<>();
 		elemento.dado = e;
 		elemento.proximo = topo;
 		topo = elemento;
@@ -40,7 +40,7 @@ public class PilhaDinamica<T> {
 	public int size() {
 		int cont = 0;
 		if (isEmpty() == false) {
-			NoPilha<T> aux = topo;
+			No<T> aux = topo;
 			 cont = 1;
 			 while (aux.proximo != null) {
 				 cont++;

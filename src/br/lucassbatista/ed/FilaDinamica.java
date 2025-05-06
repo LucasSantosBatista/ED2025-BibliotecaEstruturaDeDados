@@ -1,8 +1,8 @@
 package br.lucassbatista.ed;
 
 public class FilaDinamica<T> {
-	NoFila<T> inicio;
-	NoFila<T> fim;
+	No<T> inicio;
+	No<T> fim;
 	private int size = 0;
 
 	public FilaDinamica() {
@@ -19,7 +19,7 @@ public class FilaDinamica<T> {
 	}
 
 	public void insert(T valor) {
-		NoFila<T> elemento = new NoFila<>();
+		No<T> elemento = new No<>();
 		elemento.dado = valor;
 		elemento.proximo = null;
 
@@ -55,7 +55,7 @@ public class FilaDinamica<T> {
 			throw new Exception("Fila vazia!");
 		}
 
-		NoFila<T> aux = inicio;
+		No<T> aux = inicio;
 		while (aux != null) {
 			System.out.print(aux.dado + " ");
 			aux = aux.proximo;
