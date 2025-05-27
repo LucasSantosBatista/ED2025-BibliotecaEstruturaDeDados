@@ -53,15 +53,16 @@ public class ListaEncadeada<T> {
 	public void addLast(T valor) throws Exception {
 		if (isEmpty()) {
 			addFirst(valor);
+		} else {
+
+			int tamanho = size() - 1;
+			No<T> elemento = new No<>();
+			elemento.dado = valor;
+			elemento.proximo = null;
+
+			No<T> ultimo = getNo(tamanho);
+			ultimo.proximo = elemento;
 		}
-
-		int tamanho = size() - 1;
-		No<T> elemento = new No<>();
-		elemento.dado = valor;
-		elemento.proximo = null;
-
-		No<T> ultimo = getNo(tamanho);
-		ultimo.proximo = elemento;
 	}
 
 	public void add(T valor, int pos) throws Exception {
@@ -140,7 +141,7 @@ public class ListaEncadeada<T> {
 
 		int cont = 0;
 		No<T> aux = primeiro;
-		while (cont < pos) { 
+		while (cont < pos) {
 			aux = aux.proximo;
 			cont++;
 		}
@@ -155,15 +156,14 @@ public class ListaEncadeada<T> {
 		if (isEmpty()) {
 			throw new Exception("Lista vazia!");
 		}
-		
-	    No<T> aux = primeiro;
-	    System.out.print("Lista = ");
-	    while (aux != null) {
-	        System.out.print(aux.dado + " ");
-	        aux = aux.proximo;
-	    }
-	    System.out.println();
-	}
 
+		No<T> aux = primeiro;
+		System.out.print("Lista = ");
+		while (aux != null) {
+			System.out.print(aux.dado + " ");
+			aux = aux.proximo;
+		}
+		System.out.println();
+	}
 
 }
