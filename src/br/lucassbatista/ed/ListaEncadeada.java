@@ -52,7 +52,7 @@ public class ListaEncadeada<T> {
 
 	public void addLast(T valor) throws Exception {
 		if (isEmpty()) {
-			throw new Exception("Lista vazia!");
+			addFirst(valor);
 		}
 
 		int tamanho = size() - 1;
