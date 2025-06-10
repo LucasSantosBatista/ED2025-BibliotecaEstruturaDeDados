@@ -1,4 +1,4 @@
-package src.br.lucassbatista.ed;
+package br.lucassbatista.ed;
 
 public class NoArvore<T> {
 	T dado;
